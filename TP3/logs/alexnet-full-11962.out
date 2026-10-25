@@ -1,0 +1,29 @@
+Début du job 11962 sur le nœud starfighter-slurm-node-01-1
+Sun Oct 25 12:55:56 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.84                 Driver Version: 595.84         CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA L4                      Off |   00000000:06:10.0 Off |                    0 |
+| N/A   34C    P8             16W /   72W |       0MiB /  23034MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Chargement d'ImageNet...
+Modèle alexnet initialisé avec 61,100,840 paramètres.
+Epoch [1/50] | Train Loss: 5.6837 (Acc: 0.0451) | Val Loss: 4.6916 (Acc: 0.1154)
+Epoch [2/50] | Train Loss: 4.7180 (Acc: 0.1224) | Val Loss: 4.0723 (Acc: 0.1919)
+Epoch [3/50] | Train Loss: 4.3045 (Acc: 0.1719) | Val Loss: 3.7183 (Acc: 0.2403)
+Epoch [4/50] | Train Loss: 4.0354 (Acc: 0.2073) | Val Loss: 3.5347 (Acc: 0.2726)
+Epoch [5/50] | Train Loss: 3.8391 (Acc: 0.2347) | Val Loss: 3.3313 (Acc: 0.3042)
+Epoch [6/50] | Train Loss: 3.6868 (Acc: 0.2561) | Val Loss: 3.1580 (Acc: 0.3290)
