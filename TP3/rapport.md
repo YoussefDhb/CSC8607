@@ -6,21 +6,21 @@
 
 ## Exercice 1 : Préparation d'ImageNet et augmentation de données
 
-> **Note :** Comme au TP1. J'ai ajouté à la suite du template une fonction `check_data()` qui charge un sous-ensemble de 1000 images et affiche la forme des batchs ainsi que la moyenne et l'écart-type après `Normalize`.
+> **Note :** J'ai ajouté à la suite du template une fonction `check_data()` qui charge un sous-ensemble de 1000 images et affiche la forme des batchs ainsi que la moyenne et l'écart-type après `Normalize`.
 
 ### Output du script train_imagenet_ex1.py (test du chargement des données)
 
 ![Exercice 1](ex1.png)
 
--> Les batchs ont bien la forme attendue : **(256, 3, 227, 227)** pour les images (batch, canaux RGB, hauteur, largeur) et **(256,)** pour les étiquettes. Le batch de validation contient les 250 images du sous-ensemble (`subset_size // 4`).
+-> Les batchs ont bien la forme attendue : (256, 3, 227, 227) pour les images (batch, canaux RGB, hauteur, largeur) et **(256,)** pour les étiquettes. Le batch de validation contient les 250 images du sous-ensemble (`subset_size // 4`).
 
--> Après `Normalize`, la moyenne du batch vaut **0.035** et l'écart-type **1.183**, donc les données sont bien centrées-réduites (proches de 0 et 1).
+-> Après `Normalize`, la moyenne du batch vaut 0.035 et l'écart-type 1.183, donc les données sont bien centrées-réduites (proches de 0 et 1).
 
 ### Question 1.1
 
 - **Que se passe-t-il mathématiquement et numériquement lors de la descente de gradient si l'on oublie `transforms.Normalize` ?**
 
-    Sans `Normalize`, les pixels sortent de `ToTensor()` dans $[0, 1]$ : ils sont tous positifs, non centrés, et leur moyenne et leur dispersion diffèrent d'un canal à l'autre. Pour un neurone de la première couche, le gradient d'un poids vaut $\frac{\partial L}{\partial w_i} = \delta \cdot x_i$ : comme tous les $x_i > 0$, tous les poids de ce neurone reçoivent un gradient **du même signe**. Ils ne peuvent donc qu'augmenter ou diminuer ensemble, et la descente avance en zigzag. La surface de perte est aussi plus mal conditionnée (échelles différentes selon les entrées), donc le learning rate est plus difficile à régler : soit la convergence est lente, soit l'entraînement devient instable. Numériquement, les pré-activations de la première couche sont toutes décalées dans le même sens, ce qui peut saturer ou « tuer » des ReLU dès le départ, et un learning rate réglé pour des entrées normalisées n'est plus adapté.
+    Sans `Normalize`, les pixels sortent de `ToTensor()` dans $[0, 1]$ : ils sont tous positifs, non centrés, et leur moyenne et leur dispersion diffèrent d'un canal à l'autre. Pour un neurone de la première couche, le gradient d'un poids vaut $\frac{\partial L}{\partial w_i} = \delta \cdot x_i$ : comme tous les $x_i > 0$, tous les poids de ce neurone reçoivent un gradient du même signe. Ils ne peuvent donc qu'augmenter ou diminuer ensemble, et la descente avance en zigzag. La surface de perte est aussi plus mal conditionnée (échelles différentes selon les entrées), donc le learning rate est plus difficile à régler : soit la convergence est lente, soit l'entraînement devient instable. Numériquement, les pré-activations de la première couche sont toutes décalées dans le même sens, ce qui peut saturer ou « tuer » des ReLU dès le départ, et un learning rate réglé pour des entrées normalisées n'est plus adapté.
 
     -> La normalisation centre-réduit chaque canal ($\frac{x - \mu}{\sigma}$), ce qui donne des entrées de moyenne 0 et d'écart-type 1 et une optimisation beaucoup plus stable.
 
@@ -32,9 +32,9 @@
 
 - **Pourquoi utiliser `RandomResizedCrop` et `RandomHorizontalFlip` sur l'entraînement, mais `Resize` + `CenterCrop` sans flip sur le jeu de validation ?**
 
-    Sur l'entraînement, ces transformations font de l'**augmentation de données** : à chaque époque, le modèle voit une version différente de chaque image (autre zone, autre échelle, autre ratio, miroir). Cela augmente artificiellement la taille du dataset, rend le modèle invariant à la position, à l'échelle et à l'orientation gauche/droite de l'objet, et réduit donc le sur-apprentissage.
+    Sur l'entraînement, ces transformations font de l'augmentation de données : à chaque époque, le modèle voit une version différente de chaque image (autre zone, autre échelle, autre ratio, miroir). Cela augmente artificiellement la taille du dataset, rend le modèle invariant à la position, à l'échelle et à l'orientation gauche/droite de l'objet, et réduit donc le sur-apprentissage.
 
-    Sur la validation, on veut au contraire une mesure **déterministe et reproductible** : la même image doit donner exactement la même entrée à chaque époque, sinon la courbe de validation serait bruitée et on ne pourrait pas comparer les époques (ni les modèles) entre elles. `Resize()` + `CenterCrop()` garde la partie centrale de l'image, où se trouve en général l'objet, à une échelle proche de celle vue en moyenne à l'entraînement.
+    Sur la validation, on veut au contraire une mesure déterministe et reproductible : la même image doit donner exactement la même entrée à chaque époque, sinon la courbe de validation serait bruitée et on ne pourrait pas comparer les époques (ni les modèles) entre elles. `Resize()` + `CenterCrop()` garde la partie centrale de l'image, où se trouve en général l'objet, à une échelle proche de celle vue en moyenne à l'entraînement.
 
     -> Aléatoire pour apprendre à généraliser, déterministe pour mesurer.
 
@@ -42,7 +42,7 @@
 
 - **Exemple de tâche de classification d'images où l'augmentation par `RandomHorizontalFlip` serait néfaste et fausserait les étiquettes**
 
-    La reconnaissance de **caractères** (lettres manuscrites ou imprimées) : un « b » retourné horizontalement devient un « d », et un « p » devient un « q ». L'image retournée garderait pourtant l'étiquette d'origine : on fabriquerait des exemples faux, et le modèle apprendrait à confondre les deux classes.
+    La reconnaissance de caractères (lettres manuscrites ou imprimées) : un « b » retourné horizontalement devient un « d », et un « p » devient un « q ». L'image retournée garderait pourtant l'étiquette d'origine : on fabriquerait des exemples faux, et le modèle apprendrait à confondre les deux classes.
 
     -> Quand l'orientation gauche/droite porte l'information, le flip ne préserve plus l'étiquette : il faut le désactiver et garder seulement des augmentations sans risque (petites translations, petites rotations, variations de luminosité).
 ---
@@ -70,13 +70,13 @@
         *   Couche 3 : $256\,000 + 1000 = 257\,000$
         *   **Total = 39 897 320 paramètres**
 
-    -> C'est la **première couche** (entrée → 256) qui concentre plus de 99 % (**99.19 %**) des paramètres.
+    -> C'est la première couche (entrée → 256) qui concentre plus de 99 % (99.19%) des paramètres.
 
 #### Question 2.2
 
 - **Outre ce nombre élevé de paramètres en entrée, quel est le défaut structurel majeur du MLP lorsqu'on lui fournit une image aplatie (flatten) ?**
 
-    En aplatissant l'image, le MLP **perd toute la structure spatiale** : deux pixels voisins deviennent deux entrées indépendantes, comme deux pixels aux coins opposés de l'image. Il n'y a ni **localité** ni **partage des poids** : un motif (un bord, un œil…) appris à une position doit être réappris séparément à chaque autre position. Le MLP n'est donc pas invariant par translation : si l'objet se décale de quelques pixels, l'entrée change complètement pour lui.
+    En aplatissant l'image, le MLP perd toute la structure spatiale : deux pixels voisins deviennent deux entrées indépendantes, comme deux pixels aux coins opposés de l'image. Il n'y a ni localité ni partage des poids : un motif (un bord, un œil…) appris à une position doit être réappris séparément à chaque autre position. Le MLP n'est donc pas invariant par translation : si l'objet se décale de quelques pixels, l'entrée change complètement pour lui.
 
     -> C'est ce que corrigent les convolutions : des filtres locaux, partagés sur toute l'image.
 
@@ -121,8 +121,8 @@ Exemple pour Conv1 : $H_{out} = \lfloor \frac{227 + 4 - 11}{4} \rfloor + 1 = 56$
 
 - **Dans AlexNet, où se concentre l'essentiel des paramètres (poids) ? À l'inverse, où se concentre l'essentiel de la mémoire des activations (indispensable à stocker lors du forward pour calculer la backpropagation) ?**
 
-    *   **Paramètres :** dans les **couches entièrement connectées** : 58 631 144 paramètres, soit **96 %** du total. Linear1 seule en représente **61.8 %**, car elle relie les 9216 sorties de MaxPool3 aux 4096 neurones. Les 5 convolutions n'ont que 2 469 696 paramètres (4 %).
-    *   **Mémoire des activations :** à l'inverse, dans les **premières couches convolutives**, où les cartes de caractéristiques sont encore grandes. La partie `features` occupe 2267 KB sur 2339 (**97 %**), dont 1331 KB (57 %) pour Conv1 et Conv2 seules.
+    *   **Paramètres :** dans les couches entièrement connectées: 58 631 144 paramètres, soit 96 % du total. Linear1 seule en représente 61.8 % car elle relie les 9216 sorties de MaxPool3 aux 4096 neurones. Les 5 convolutions n'ont que 2 469 696 paramètres (4 %).
+    *   **Mémoire des activations :** à l'inverse, dans les premières couches convolutives, où les cartes de caractéristiques sont encore grandes. La partie `features` occupe 2267 KB sur 2339 (97%), dont 1331 KB (57 %) pour Conv1 et Conv2 seules.
 
     -> Les convolutions coûtent en mémoire, les couches denses coûtent en paramètres.
 
@@ -130,11 +130,11 @@ Exemple pour Conv1 : $H_{out} = \lfloor \frac{227 + 4 - 11}{4} \rfloor + 1 = 56$
 
 - **Comparez la mémoire totale des activations d'AlexNet (environ $2340\text{ KB}$ par image) avec celle du MLP de l'étape 1. Expliquez ce paradoxe alors que les deux réseaux ont un ordre de grandeur similaire en nombre de paramètres.**
 
-    Pour le MLP, les activations de sortie valent $(256 + 256 + 1000) \times 4 / 1024 \approx$ **5.9 KB** par image, contre **≈ 2339 KB** pour AlexNet, soit environ **400 fois plus**, alors que les deux réseaux ont 40 M et 61 M de paramètres.
+    Pour le MLP, les activations de sortie valent $(256 + 256 + 1000) \times 4 / 1024 \approx$ 5.9 KB par image, contre ≈ 2339 KB pour AlexNet, soit environ 400 fois plus, alors que les deux réseaux ont 40 M et 61 M de paramètres.
 
-    Ce paradoxe vient du **partage des poids** de la convolution : un filtre de quelques centaines de paramètres est appliqué à **toutes les positions** de l'image et produit une sortie pour chacune (Conv1 : $64 \times 56 \times 56 = 200\,704$ valeurs pour seulement 23 296 paramètres). Le MLP fait l'inverse : chaque connexion a son propre poids (39.6 M pour la première couche), mais il compresse immédiatement l'image en 256 valeurs.
+    Ce paradoxe vient du partage des poids de la convolution : un filtre de quelques centaines de paramètres est appliqué à toutes les positions de l'image et produit une sortie pour chacune (Conv1 : $64 \times 56 \times 56 = 200\,704$ valeurs pour seulement 23 296 paramètres). Le MLP fait l'inverse : chaque connexion a son propre poids (39.6 M pour la première couche), mais il compresse immédiatement l'image en 256 valeurs.
 
-    Or ce sont les activations qu'il faut garder pour la rétropropagation, et elles sont multipliées par la taille du batch : avec 256 images, AlexNet stocke environ **585 MB** d'activations de sortie, contre environ **1.5 MB** pour le MLP.
+    Or ce sont les activations qu'il faut garder pour la rétropropagation, et elles sont multipliées par la taille du batch : avec 256 images, AlexNet stocke environ 585 MB d'activations de sortie, contre environ 1.5 MB pour le MLP.
 
     -> Le nombre de paramètres ne suffit pas pour estimer la mémoire GPU : pour un CNN, ce sont les activations (× batch size) qui dominent.
 
@@ -156,7 +156,7 @@ Exemple pour Conv1 : $H_{out} = \lfloor \frac{227 + 4 - 11}{4} \rfloor + 1 = 56$
 
 - **Quel est le rôle exact de `model.eval()` et `model.train()` vis-à-vis des couches `nn.Dropout` présentes dans AlexNet ? Que se passerait-il si l'on oubliait `model.eval()` pendant l'évaluation ?**
 
-    `model.train()` **active** le Dropout : à chaque passe avant, chaque neurone est mis à zéro avec une probabilité $p = 0.5$, et les neurones restants sont multipliés par $\frac{1}{1-p} = 2$ pour garder la même espérance. `model.eval()` le **désactive** : tous les neurones sont utilisés et la sortie devient déterministe.
+    `model.train()` active le Dropout : à chaque passe avant, chaque neurone est mis à zéro avec une probabilité $p = 0.5$, et les neurones restants sont multipliés par $\frac{1}{1-p} = 2$ pour garder la même espérance. `model.eval()` le désactive : tous les neurones sont utilisés et la sortie devient déterministe.
 
     Si on oubliait `model.eval()`, l'évaluation serait faite avec un réseau privé de la moitié des neurones de ses couches denses, et différent à chaque batch. La `val_loss` serait plus élevée, l'accuracy plus faible et les résultats changeraient d'une évaluation à l'autre.
 
@@ -167,12 +167,12 @@ Exemple pour Conv1 : $H_{out} = \lfloor \frac{227 + 4 - 11}{4} \rfloor + 1 = 56$
 - **Sur un jeu de données à 1000 classes équilibrées comme ImageNet, quelle est la valeur théorique de l'accuracy et de la CrossEntropyLoss ($\ln(1000)$) à l'initialisation (choix purement aléatoire) ? Vos premières époques sont-elles cohérentes avec ces valeurs ?**
 
     Avec un choix purement aléatoire, chaque classe reçoit la probabilité $\frac{1}{1000}$ :
-    *   Accuracy : $\frac{1}{1000} =$ **0.1 %**
+    *   Accuracy : $\frac{1}{1000} =$ 0.1 %
     *   CrossEntropyLoss : $-\ln\left(\frac{1}{1000}\right) = \ln(1000) \approx$ **6.9078**
 
     À la première époque, on obtient :
-    *   **AlexNet :** Train Loss = **6.9082** (Acc : **0.0013**), Val Loss = **6.9063** (Acc : **0.0008**)
-    *   **MLP :** Train Loss = **7.1896** (Acc : **0.0014**), Val Loss = **6.9893** (Acc : **0.0010**)
+    *   **AlexNet :** Train Loss = 6.9082 (Acc : 0.0013), Val Loss = 6.9063 (Acc : 0.0008)
+    *   **MLP :** Train Loss = 7.1896 (Acc : 0.0014), Val Loss = 6.9893 (Acc : 0.0010)
 
     Les accuracies (0.08 % à 0.14 %) sont bien au niveau du hasard, et les losses d'AlexNet sont pratiquement égales à $\ln(1000)$. La Train Loss du MLP est un peu au-dessus (7.19) : c'est une moyenne sur toute la première époque, et pendant les premières itérations, Adam déplace chacun des poids de la première couche d'environ `lr` à chaque pas. Cumulés sur 154 587 entrées par neurone, ces petits déplacements font fortement varier les sorties, ce qui donne probablement des prédictions instables et trop « confiantes », plus coûteuses que $\ln(1000)$. Elle redescend à 6.96 dès l'époque 2.
 
@@ -186,7 +186,7 @@ Courbes `Loss/Train`, `Loss/Validation`, `Accuracy/Train` et `Accuracy/Validatio
 
 - **Comparez les courbes TensorBoard (Train/Val Loss et Accuracy) du MLP et d'AlexNet sur ce sous-ensemble de 20 000 images. Lequel apprend le mieux ? Lequel sur-apprend (overfit) le plus vite et pourquoi ?**
 
-    C'est **AlexNet** qui apprend le mieux : après 10 époques, sa Val Loss descend à **6.4948** (Val Acc : **0.78 %**), contre **6.8572** (Val Acc : **0.56 %**) pour le MLP, dont les courbes restent presque plates. Grâce aux convolutions, AlexNet exploite la structure spatiale de l'image, alors que le MLP doit tout apprendre à partir de pixels aplatis.
+    C'est **AlexNet** qui apprend le mieux : après 10 époques, sa Val Loss descend à 6.4948 (Val Acc : 0.78 %), contre 6.8572 (Val Acc : 0.56 %) pour le MLP, dont les courbes restent presque plates. Grâce aux convolutions, AlexNet exploite la structure spatiale de l'image, alors que le MLP doit tout apprendre à partir de pixels aplatis.
 
     C'est aussi **AlexNet** qui commence à sur-apprendre le premier : sa Train Loss continue de baisser (6.4257 → 6.3497 entre les époques 9 et 10) alors que sa Val Loss stagne puis remonte légèrement (6.4908 → 6.4948), et l'écart train/val passe à 0.145 (contre 0.081 pour le MLP). Avec seulement 20 images par classe en moyenne, AlexNet apprend assez vite pour commencer à mémoriser les images d'entraînement. Le MLP, lui, apprend trop lentement pour en arriver là en 10 époques : il est encore en sous-apprentissage.
 
@@ -206,7 +206,7 @@ Courbes d'AlexNet (orange) et d'AlexNet profond (rouge foncé). Le lissage Tenso
 
 - **Observez les courbes d'entraînement de ce réseau plus profond par rapport à l'AlexNet standard. La dégradation ou la difficulté à démarrer l'apprentissage que vous observez au début relève-t-elle du sur-apprentissage (overfitting) ou du sous-apprentissage (underfitting) ? Comment l'expliquez-vous du point de vue de la propagation du gradient ?**
 
-    Il s'agit de **sous-apprentissage** (*underfitting*) : pendant les 3 premières époques, c'est la `Loss/Train` elle-même qui reste bloquée près de $\ln(1000)$ (**6.9082 → 6.8956**, contre 6.9082 → 6.8462 pour AlexNet), avec une accuracy d'entraînement au niveau du hasard (0.13 % à 0.14 %), et la Val Loss ne bouge pas (≈ 6.91). Le réseau n'arrive même pas à apprendre le jeu d'entraînement. À l'époque 10, il reste loin derrière AlexNet : Train Loss **6.6660** contre 6.3497, Val Loss **6.7734** contre 6.4948. Un sur-apprentissage se traduirait au contraire par une `Loss/Train` qui baisse et une `Loss/Validation` qui remonte.
+    Il s'agit de sous-apprentissage (*underfitting*) : pendant les 3 premières époques, c'est la `Loss/Train` elle-même qui reste bloquée près de $\ln(1000)$ (6.9082 → 6.8956, contre 6.9082 → 6.8462 pour AlexNet), avec une accuracy d'entraînement au niveau du hasard (0.13 % à 0.14 %), et la Val Loss ne bouge pas (≈ 6.91). Le réseau n'arrive même pas à apprendre le jeu d'entraînement. À l'époque 10, il reste loin derrière AlexNet : Train Loss 6.6660 contre 6.3497, Val Loss 6.7734 contre 6.4948. Un sur-apprentissage se traduirait au contraire par une `Loss/Train` qui baisse et une `Loss/Validation` qui remonte.
 
     Du point de vue du gradient, la rétropropagation multiplie les dérivées locales couche par couche (règle de la chaîne). Avec 3 couches de plus, sans BatchNorm ni connexions résiduelles, le signal s'atténue à chaque couche : le gradient qui arrive aux premières couches devient très petit (*vanishing gradient*). Conv1 à Conv5 sont alors à peine mises à jour, et la sortie reste presque constante.
 
@@ -230,11 +230,11 @@ Courbes d'AlexNet (orange) et d'AlexNet profond (rouge foncé). Le lissage Tenso
 
 - **Combien de temps (en minutes/secondes) dure exactement une époque complète sur les 1,28 million d'images d'entraînement avec votre GPU ?**
 
-    D'après les barres de progression du fichier `logs/alexnet-full-11962.err`, une époque d'entraînement complète (5005 batchs de 256 images) dure **24 min 00 s** sur le **NVIDIA L4** (entre 23:57 et 24:04 selon les époques), soit **3.47 batchs/s ≈ 890 images/s**. Il faut ajouter **1 min 06 s** pour l'évaluation sur les 50 000 images de validation, donc environ **25 min** par époque au total.
+    D'après les barres de progression du fichier `logs/alexnet-full-11962.err`, une époque d'entraînement complète (5005 batchs de 256 images) dure 24 min 00 s sur le NVIDIA L4 (entre 23:57 et 24:04 selon les époques), soit 3.47 batchs/s ≈ 890 images/s, Il faut ajouter 1 min 06 s pour l'évaluation sur les 50 000 images de validation, donc environ 25 min par époque au total.
 
 - **À cette vitesse, combien d'heures faudrait-il pour compléter 100 époques sans Early Stopping ?**
 
-    $100 \times 25 \text{ min} \approx 2\,510 \text{ min} \approx$ **42 heures**, soit environ **1.75 jour** de calcul sur un seul GPU. Comme le job est limité à 4 h (environ 9 époques), il faudrait le relancer une dizaine de fois.
+    $100 \times 25 \text{ min} \approx 2\,510 \text{ min} \approx$ 42 heures, soit environ 1.75 jour de calcul sur un seul GPU. Comme le job est limité à 4 h (environ 9 époques), il faudrait le relancer une dizaine de fois.
 
     -> Un entraînement complet d'AlexNet sur ImageNet demande presque deux jours de GPU : c'est pour cela qu'on valide d'abord le code sur un petit sous-ensemble.
 
@@ -259,9 +259,9 @@ Courbes `Loss/Train`, `Loss/Validation`, `Accuracy/Train` et `Accuracy/Validatio
 
 - **Comparez l'écart entre Loss/Train et Loss/Validation sur le dataset complet (1,28M d'images + Data Augmentation) avec celui que vous aviez observé à l'exercice 3 sur le petit sous-ensemble de 20 000 images. Pourquoi le sur-apprentissage est-il beaucoup plus faible ici ?**
 
-    Sur le dataset complet, il n'y a **aucun sur-apprentissage** : les deux pertes baissent ensemble à chaque époque, et la Val Loss reste même **inférieure** à la Train Loss (3.1580 contre 3.6868 à l'époque 6, soit un écart de **−0.53**), avec une Val Acc de **32.90 %** contre 25.61 % en train. À l'exercice 3, au contraire, la Val Loss d'AlexNet dépassait la Train Loss de **0.145** à l'époque 10 et commençait à remonter, pour une accuracy inférieure à 1 %.
+    Sur le dataset complet, il n'y a aucun sur-apprentissage: les deux pertes baissent ensemble à chaque époque, et la Val Loss reste même inférieure à la Train Loss (3.1580 contre 3.6868 à l'époque 6, soit un écart de −0.53), avec une Val Acc de 32.90 % contre 25.61 % en train. À l'exercice 3, au contraire, la Val Loss d'AlexNet dépassait la Train Loss de 0.145 à l'époque 10 et commençait à remonter, pour une accuracy inférieure à 1 %.
 
-    La raison principale est la **quantité de données** : on passe de 20 000 images (≈ 20 par classe) à 1,28 million (≈ 1280 par classe), soit 64 fois plus. Avec 61 M de paramètres, AlexNet pouvait commencer à mémoriser 20 000 images, mais pas 1,28 million : il est obligé d'apprendre des motifs qui généralisent. De plus, avec la **Data Augmentation**, le modèle voit une version différente de chaque image à chaque époque, donc il ne revoit presque jamais deux fois la même entrée.
+    La raison principale est la quantité de données : on passe de 20 000 images (≈ 20 par classe) à 1,28 million (≈ 1280 par classe), soit 64 fois plus. Avec 61 M de paramètres, AlexNet pouvait commencer à mémoriser 20 000 images, mais pas 1,28 million : il est obligé d'apprendre des motifs qui généralisent. De plus, avec la Data Augmentation, le modèle voit une version différente de chaque image à chaque époque, donc il ne revoit presque jamais deux fois la même entrée.
 
     -> Plus de données (et plus de variété) est la régularisation la plus efficace contre le sur-apprentissage.
 
@@ -272,7 +272,7 @@ Courbes `Loss/Train`, `Loss/Validation`, `Accuracy/Train` et `Accuracy/Validatio
     1. **Le Dropout** : actif pendant l'entraînement (`model.train()`) et désactivé pendant la validation (`model.eval()`). La Train Loss est donc calculée avec un réseau qui n'utilise que la moitié des neurones de ses couches denses, moins performant que le réseau complet utilisé en validation.
     2. **La Data Augmentation** : elle ne s'applique qu'à l'entraînement. `RandomResizedCrop` peut ne garder qu'une petite partie de l'image (jusqu'à 8 % de sa surface) avec un ratio déformé, alors que les images de validation (`Resize` + `CenterCrop`) sont centrées sur l'objet et non déformées, donc plus « faciles ».
 
-    On l'observe ici à chacune des 6 époques : Val Loss **4.6916** contre **5.6837** en train à l'époque 1, et **3.1580** contre **3.6868** à l'époque 6.
+    On l'observe ici à chacune des 6 époques : Val Loss 4.6916 contre 5.6837 en train à l'époque 1, et 3.1580 contre 3.6868 à l'époque 6.
 
     En plus, la Train Loss est une moyenne sur toute l'époque (avec des poids encore mauvais au début), alors que la Val Loss est mesurée à la fin de l'époque, avec les poids déjà améliorés, ce qui explique un tel résultat.
 
