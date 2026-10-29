@@ -1,0 +1,69 @@
+Job 15020 sur starfighter-slurm-node-01-1
+Thu Oct 29 14:27:11 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.84                 Driver Version: 595.84         CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA L4                      Off |   00000000:06:10.0 Off |                    0 |
+| N/A   34C    P8             16W /   72W |       0MiB /  23034MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Computing vocabulary...
+Number of words: 23461
+Vocabulary size: 20226
+Epoch 1
+Prediction : man men are standing are on the with with other are in man in other is in on on
+Target     : four people are scuba diving in swimming pool two girls one bald man the third person you can only
+Epoch 2
+Prediction : two people are sitting are in the pool with people in in man in other is in is be
+Target     : four people are scuba diving in swimming pool two girls one bald man the third person you can only
+Epoch 3
+Prediction : two people are sitting underwater underwater the pool with other one in man in other is in is be
+Target     : four people are scuba diving in swimming pool two girls one bald man the third person you can only
+Epoch 4
+Prediction : two men are sitting underwater in the pool with young are in one in other is is is be
+Target     : four people are scuba diving in swimming pool two girls one bald man the third person you can only
+Epoch 5
+Prediction : two men in playing diving or pool pool with them in in one in other is is is be
+Target     : four people are scuba diving in swimming pool two girls one bald man the third person you can only
+Epoch 6
+Prediction : two men in in diving underwater the pool with them are in one in other is is is be
+Target     : four people are scuba diving in swimming pool two girls one bald man the third person you can only
+Epoch 7
+Prediction : two men in in diving in the pool with them in in one in other is is is be
+Target     : four people are scuba diving in swimming pool two girls one bald man the third person you can only
+Epoch 8
+Prediction : two men in in diving in the pool with them are in one in other is is is be
+Target     : four people are scuba diving in swimming pool two girls one bald man the third person you can only
+Epoch 9
+Prediction : two men in in diving in the pool with them are in one in other is is is be
+Target     : four people are scuba diving in swimming pool two girls one bald man the third person you can only
+Epoch 10
+Prediction : two men in in diving in the pool with them are in one in other is is is be
+Target     : four people are scuba diving in swimming pool two girls one bald man the third person you can only
+Epoch 11
+Prediction : two men in in diving in the pool with them are in one in other is is is be
+Target     : four people are scuba diving in swimming pool two girls one bald man the third person you can only
+Epoch 12
+Prediction : two men in in diving in the pool with them are in one in other is is is be
+Target     : four people are scuba diving in swimming pool two girls one bald man the third person you can only
+Epoch 13
+Prediction : two men in in diving in the pool with them are in one in other is is is be
+Target     : four people are scuba diving in swimming pool two girls one bald man the third person you can only
+Epoch 14
+Prediction : two men in in diving in the pool with them are in one in other is is is be
+Target     : four people are scuba diving in swimming pool two girls one bald man the third person you can only
+Epoch 15
+Prediction : two men in in diving in the pool with them are in one in other is is is be
+Target     : four people are scuba diving in swimming pool two girls one bald man the third person you can only
