@@ -1,0 +1,77 @@
+Job 14948 sur starfighter-slurm-node-04-1
+Thu Oct 29 10:29:52 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.84                 Driver Version: 595.84         CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA L4                      Off |   00000000:06:10.0 Off |                    0 |
+| N/A   35C    P8             16W /   72W |       0MiB /  23034MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Nombre de chansons (Train) : 214122
+Nombre de chansons (Val)   : 2162
+
+--- Exemple de partition (Train[0]) ---
+X:1
+L:1/8
+M:4/4
+K:Emin
+|: E2 EF E2 EF | DEFG AFDF | E2 EF E2 B2 |1 efe^d e2 e2 :|2 efe^d e3 B |: e2 ef g2 fe | 
+ defg afdf |1 e2 ef g2 fe | efe^d e3 B :|2 g2 bg f2 af | efe^d e2 e2 ||
+Taille du vocabulaire : 95 caractères uniques
+Longueur moyenne : 290.1 | Longueur max : 2968
+Epoch 01 | Train Loss: 0.8014 | Val Loss: 0.6003 | Val Acc: 0.8054 | Avg GradNorm: 10.384
+Epoch 02 | Train Loss: 0.5696 | Val Loss: 0.5501 | Val Acc: 0.8203 | Avg GradNorm: 0.066
+Epoch 03 | Train Loss: 0.5314 | Val Loss: 0.5280 | Val Acc: 0.8266 | Avg GradNorm: 0.057
+Epoch 04 | Train Loss: 0.5110 | Val Loss: 0.5189 | Val Acc: 0.8301 | Avg GradNorm: 0.055
+Epoch 05 | Train Loss: 0.4970 | Val Loss: 0.5066 | Val Acc: 0.8339 | Avg GradNorm: 0.052
+Epoch 06 | Train Loss: 0.4861 | Val Loss: 0.5013 | Val Acc: 0.8363 | Avg GradNorm: 0.050
+Epoch 07 | Train Loss: 0.4800 | Val Loss: 0.4969 | Val Acc: 0.8385 | Avg GradNorm: 0.049
+Epoch 08 | Train Loss: 0.4819 | Val Loss: 0.5326 | Val Acc: 0.8264 | Avg GradNorm: 0.052
+Epoch 09 | Train Loss: 0.5121 | Val Loss: 0.5454 | Val Acc: 0.8228 | Avg GradNorm: 0.066
+Epoch 10 | Train Loss: 0.5127 | Val Loss: 0.5167 | Val Acc: 0.8319 | Avg GradNorm: 0.051
+Epoch 11 | Train Loss: 0.4969 | Val Loss: 0.5389 | Val Acc: 0.8246 | Avg GradNorm: 0.049
+Epoch 12 | Train Loss: 0.5136 | Val Loss: 0.5594 | Val Acc: 0.8192 | Avg GradNorm: 0.419
+Early stopping déclenché à l'époque 12.
+
+===== Température T = 0.2 =====
+X:1
+T:Irish Reel
+M:4/4
+L:1/8
+K:D
+ d2 df e2 d2 | B2 B2 B2 A2 | d2 d2 d2 A2 | B2 A2 F2 A2 | B2 B2 B2 A2 | 
+ F2 E2 E4 | d2 d2 B2 A2 | F2 F2 F2 E2 | D2 F2 A2 B2 | A2 F2 E2 D2 | D2 F2 A2 B2 | A2 F2 E4 | 
+ D2 F2 A2 A2 | B2 A2 F2 A2 | B2 A2 F2 E2 | D2 F2 E4 | D2 F2 A2 B2 | A4 F4 | A2 F2 E2 D2 | 
+ F4 E4 | D2 F2 A2 B2 | A4 F4 | A2 F2 E2 D2 
+
+===== Température T = 0.8 =====
+X:1
+T:Irish Reel
+M:4/4
+L:1/8
+K:D
+ A3 B AF A2 | F3 G AG FE | F3 c BA FA | dc Bc Ad d2 | A3 B A2 Bc |1 
+ d2 f2 d2 cd :|2 B2 G2 G2 FG || B2 Bc B2 Bd | c2 Bc A2 dc | B3 A BA FB | A2 F2 F2 ED | F2 Bc B2 AG | 
+ F3 G F2 AG | F3 F GA FG |1 A2 D2 D2 Bc :|2 F2 G2 A4 ||                                                                          
+
+===== Température T = 2.0 =====
+X:1
+T:Irish Reel
+M:4/4
+L:1/8
+K:D
+|: D2 GA EC D>G |: ga (3fdf ge gd |"A" Fdfa ge | fa 
+"Am/A" Ae(fe) |"D" (fejDE)g)  fg | 1(2(f/g/)d- df/e rHecA-)}AAA|q(ublie\!"e7)" B2-"G" !>!!bfC2B]/)sc{/BB4)BB)} BG/B d.B/k | 
+[Q:BY}"D"{FRqFa]2 A,/>uBc/ (d<.b)"F7" Ed e/.a"Bb" |1,2bvD7u(c]:2-"g" bagb/a<z2/{/gh8) z{/G{ccczic[QBB^A/ ||[M:0/8]{FGE]"A#
