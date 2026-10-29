@@ -193,7 +193,7 @@ Courbes `Loss/Validation` et `Accuracy/Validation` (`ex3_4.png`) et `GradNorm/Ep
 
 - **Comparez l'évolution de la norme des gradients et la stabilité de la perte entre le Run 1 et le Run 2. Quel problème théorique du RNN simple le *gradient clipping* corrige-t-il ici ?**
 
-    Pour les deux RNN, la norme des gradients est très élevée au tout début (au-dessus de 2 sur `GradNorm/step`), puis retombe autour de 0.2–0.4, avec des **pics isolés** (par exemple vers le pas 320 pour le Run 2 et vers le pas 800 pour le Run 1). La valeur enregistrée est la norme *avant* clipping, car `clip_grad_norm_` renvoie la norme d'origine : les courbes des deux runs se ressemblent donc, et l'effet du clipping se voit surtout sur la perte.
+    Pour les deux RNN, la norme des gradients est très élevée au tout début (**5.97** au premier pas sur `GradNorm/step`), puis retombe autour de 0.2–0.4, avec des **pics isolés** : **0.806** au pas 320 pour le Run 2 et **0.621** au pas 820 pour le Run 1. La valeur enregistrée est la norme *avant* clipping, car `clip_grad_norm_` renvoie la norme d'origine : les courbes des deux runs se ressemblent donc, et l'effet du clipping se voit surtout sur la perte.
 
     *   **Run 1 (sans clipping) :** la perte est instable. À l'époque 12, la Val Loss remonte brusquement de **0.7215 à 0.8351** (Val Acc de 77.27 % à 74.47 %), et la Train Loss remonte aussi pendant 2 époques (0.7248 → 0.7660) : un pas trop grand a dégradé les poids, et la Val Loss ne retrouve plus son meilleur niveau (0.7215) avant la fin. Résultat final : Val Loss **0.7358**, Val Acc **77.05 %**.
     *   **Run 2 (clipping à 1.0) :** la descente est plus régulière, les remontées sont plus petites (0.7518 → 0.7905 à l'époque 8) et la meilleure valeur est atteinte à la dernière époque : Val Loss **0.7112**, Val Acc **77.71 %**.
@@ -207,7 +207,7 @@ Courbes `Loss/Validation` et `Accuracy/Validation` (`ex3_4.png`) et `GradNorm/Ep
     Le **LSTM** (Run 3) est nettement meilleur :
     *   **Vitesse de convergence :** dès l'époque 2, sa Val Loss (**0.6806**) est déjà plus basse que celle du RNN à la fin de l'entraînement (0.7112).
     *   **Résultats finaux (époque 15) :** Val Loss **0.5616** contre 0.7112, et Val Acc **81.99 %** contre 77.71 % pour le RNN.
-    *   **Gradients :** sa norme moyenne se stabilise autour de **0.10** dès l'époque 3, contre 0.2–0.4 pour le RNN, et sans pic.
+    *   **Gradients :** sa norme part de 2.68 au premier pas (contre 5.97 pour le RNN), puis sa moyenne se stabilise autour de **0.10** dès l'époque 3, contre 0.2–0.4 pour le RNN, sans pic (au plus 0.168).
 
     Dans le LSTM, le *cell state* est mis à jour de façon **additive** :
     $$c_t = f_t \odot c_{t-1} + i_t \odot g_t$$
