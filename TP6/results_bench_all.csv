@@ -1,0 +1,15 @@
+tag,materiel,arch,precision,channels_last,compile,donnees,workers,pin_memory,batch,img_s,img_s_min,img_s_max,pic_memoire_go,compilation_s,epoque_s
+ref-synth,NVIDIA H100 NVL MIG 1g.12gb,resnet50,fp32,False,False,synthetic,,,64,108.3,108.2,108.3,5.95,nan,nan
+ref-raw,NVIDIA H100 NVL MIG 1g.12gb,resnet50,fp32,False,False,raw,3,True,64,108.0,108.0,108.1,5.95,nan,119.3
+ref-synth,NVIDIA H100 NVL MIG 1g.12gb,resnet50,fp32,False,False,synthetic,,,64,108.1,108.1,108.2,5.95,nan,nan
+ref-raw,NVIDIA H100 NVL MIG 1g.12gb,resnet50,fp32,False,False,raw,3,True,64,108.0,107.9,108.2,5.95,nan,119.7
+ref-synth,NVIDIA H100 NVL,resnet50,fp32,False,False,synthetic,,,64,716.3,714.5,717.1,5.95,nan,nan
+ref-raw,NVIDIA H100 NVL,resnet50,fp32,False,False,raw,3,True,64,700.3,694.8,700.7,5.95,nan,21.9
+ref-synth,NVIDIA H100 NVL,resnet50,fp32,False,False,synthetic,,,64,717.2,714.8,717.3,5.95,nan,nan
+ref-raw,NVIDIA H100 NVL,resnet50,fp32,False,False,raw,3,True,64,702.4,698.9,720.2,5.95,nan,21.9
+ref-synth,NVIDIA H100 NVL,resnet50,fp32,False,False,synthetic,,,64,707.1,706.9,707.4,5.95,nan,nan
+ref-raw,NVIDIA H100 NVL,resnet50,fp32,False,False,raw,3,True,64,685.8,684.4,692.7,5.95,nan,21.4
+ref-synth,NVIDIA H100 NVL,resnet50,fp32,False,False,synthetic,,,64,714.9,713.7,716.9,5.95,nan,nan
+ref-raw,NVIDIA H100 NVL,resnet50,fp32,False,False,raw,3,True,64,708.4,697.1,719.4,5.95,nan,22.4
+ref-synth,NVIDIA H100 NVL,resnet50,fp32,False,False,synthetic,,,64,715.0,714.4,717.0,5.95,nan,nan
+ref-raw,NVIDIA H100 NVL,resnet50,fp32,False,False,raw,3,True,64,698.9,698.3,699.9,5.95,nan,18.8

@@ -1,0 +1,23 @@
+tag,materiel,arch,precision,channels_last,compile,donnees,workers,pin_memory,batch,img_s,img_s_min,img_s_max,pic_memoire_go,compilation_s,epoque_s
+ref-synth,NVIDIA H100 NVL MIG 1g.12gb,resnet50,fp32,False,False,synthetic,,,64,108.3,108.2,108.3,5.95,nan,nan
+ref-raw,NVIDIA H100 NVL MIG 1g.12gb,resnet50,fp32,False,False,raw,3,True,64,108.0,108.0,108.1,5.95,nan,119.3
+raw-w0,NVIDIA H100 NVL,resnet50,fp32,False,False,raw,0,True,64,188.5,186.0,191.0,5.95,nan,nan
+raw-w1,NVIDIA H100 NVL,resnet50,fp32,False,False,raw,1,True,64,304.7,260.1,349.4,5.95,nan,nan
+raw-w2,NVIDIA H100 NVL,resnet50,fp32,False,False,raw,2,True,64,708.9,708.6,709.1,5.95,nan,nan
+raw-w3,NVIDIA H100 NVL,resnet50,fp32,False,False,raw,3,True,64,710.2,708.8,711.5,5.95,nan,nan
+raw-w3-nopin,NVIDIA H100 NVL,resnet50,fp32,False,False,raw,3,False,64,629.6,629.4,629.8,5.95,nan,nan
+small-w0,NVIDIA H100 NVL,resnet50,fp32,False,False,small,0,True,64,286.7,286.2,287.1,5.95,nan,nan
+small-w3,NVIDIA H100 NVL,resnet50,fp32,False,False,small,3,True,64,701.9,700.3,703.5,5.95,nan,nan
+fp32-synthetic,NVIDIA H100 NVL,resnet50,fp32,False,False,synthetic,,,64,725.8,722.5,726.0,5.95,nan,nan
+tf32-synthetic,NVIDIA H100 NVL,resnet50,tf32,False,False,synthetic,,,64,1642.1,1620.5,1672.6,5.93,nan,nan
+bf16-synthetic,NVIDIA H100 NVL,resnet50,bf16,False,False,synthetic,,,64,1995.0,1993.6,1995.4,3.29,nan,nan
+bf16-cl-synthetic,NVIDIA H100 NVL,resnet50,bf16,True,False,synthetic,,,64,3390.8,3206.2,3422.1,3.29,nan,nan
+bf16-cl-compile-synthetic,NVIDIA H100 NVL,resnet50,bf16,True,True,synthetic,,,64,4051.7,4008.3,4236.6,3.07,40.4,nan
+bf16-cl-raw-w1,NVIDIA H100 NVL,resnet50,bf16,True,False,raw,1,True,64,182.6,171.6,196.9,3.29,nan,nan
+bf16-cl-compile-raw-w1,NVIDIA H100 NVL,resnet50,bf16,True,True,raw,1,True,64,214.0,202.8,223.3,3.07,5.9,nan
+bf16-cl-raw-w3,NVIDIA H100 NVL,resnet50,bf16,True,False,raw,3,True,64,2473.2,1562.4,2480.8,3.29,nan,nan
+bf16-cl-compile-raw-w3,NVIDIA H100 NVL,resnet50,bf16,True,True,raw,3,True,64,4157.2,1397.0,4248.1,3.07,6.2,nan
+bf16-cl-small-w1,NVIDIA H100 NVL,resnet50,bf16,True,False,small,1,True,64,493.8,491.1,499.7,3.29,nan,nan
+bf16-cl-compile-small-w1,NVIDIA H100 NVL,resnet50,bf16,True,True,small,1,True,64,484.8,448.2,509.7,3.07,3.7,nan
+bf16-cl-small-w3,NVIDIA H100 NVL,resnet50,bf16,True,False,small,3,True,64,1023.5,792.0,1481.9,3.29,nan,nan
+bf16-cl-compile-small-w3,NVIDIA H100 NVL,resnet50,bf16,True,True,small,3,True,64,1843.3,1272.3,3434.3,3.07,6.5,nan

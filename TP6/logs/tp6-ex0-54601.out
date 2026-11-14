@@ -1,0 +1,18 @@
+Job 54601 sur arcadia-slurm-node-2 ; GPU : MIG-f2f35eff-b07f-5887-8dc6-e4889954a9b4 ; CPU : 4
+GPU 0: NVIDIA H100 NVL (UUID: GPU-9c8730d9-e31a-1f0e-da32-eab6ca2df177)
+  MIG 1g.12gb     Device  0: (UUID: MIG-f2f35eff-b07f-5887-8dc6-e4889954a9b4)
+Machine        : arcadia-slurm-node-2
+Python         : 3.10.21
+torch          : 2.14.0+cu130 (CUDA 13.0)
+torchvision    : 0.28.0
+W1112 11:12:06.542000 28 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+torchao        : 0.18.0
+CPU alloués    : 4  (x86_64)
+Drapeaux CPU   : avx512f, avx512_vnni, avx512_bf16
+gcc            : /usr/bin/gcc
+GPU            : NVIDIA H100 NVL MIG 1g.12gb
+Mémoire GPU    : 11008 Mio au total, 10898 Mio libres
+bf16 supporté  : True
+Données raw    : /mnt/ssd/imagenet/2012 -> (12894, 500) images (train, val)
+Données small  : /tmp/ydhouib/tp6/imagenet10_256 -> (12894, 500) images (train, val)
+Poids ResNet-50 pré-entraînés : OK

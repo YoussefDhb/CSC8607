@@ -1,0 +1,49 @@
+Job 54900 sur arcadia-slurm-node-3 ; GPU : 0 ; CPU : 4
+tag=fp32-synthetic | materiel=NVIDIA H100 NVL | arch=resnet50 | precision=fp32 | channels_last=False | compile=False | donnees=synthetic | workers= | pin_memory= | batch=64 | img_s=725.8 | img_s_min=722.5 | img_s_max=726.0 | pic_memoire_go=5.95 | compilation_s=nan | epoque_s=nan
+tag=tf32-synthetic | materiel=NVIDIA H100 NVL | arch=resnet50 | precision=tf32 | channels_last=False | compile=False | donnees=synthetic | workers= | pin_memory= | batch=64 | img_s=1642.1 | img_s_min=1620.5 | img_s_max=1672.6 | pic_memoire_go=5.93 | compilation_s=nan | epoque_s=nan
+tag=bf16-synthetic | materiel=NVIDIA H100 NVL | arch=resnet50 | precision=bf16 | channels_last=False | compile=False | donnees=synthetic | workers= | pin_memory= | batch=64 | img_s=1995.0 | img_s_min=1993.6 | img_s_max=1995.4 | pic_memoire_go=3.29 | compilation_s=nan | epoque_s=nan
+tag=bf16-cl-synthetic | materiel=NVIDIA H100 NVL | arch=resnet50 | precision=bf16 | channels_last=True | compile=False | donnees=synthetic | workers= | pin_memory= | batch=64 | img_s=3390.8 | img_s_min=3206.2 | img_s_max=3422.1 | pic_memoire_go=3.29 | compilation_s=nan | epoque_s=nan
+In file included from /mnt/hdd/homes/ydhouib/miniforge3/envs/deeplearning/include/python3.10/Python.h:8,
+                 from /mnt/hdd/homes/ydhouib/miniforge3/envs/deeplearning/lib/python3.10/site-packages/triton/backends/nvidia/driver.c:9:
+/mnt/hdd/homes/ydhouib/miniforge3/envs/deeplearning/include/python3.10/pyconfig.h:1643:9: warning: ‘_POSIX_C_SOURCE’ redefined
+ 1643 | #define _POSIX_C_SOURCE 200809L
+      |         ^~~~~~~~~~~~~~~
+In file included from /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:33,
+                 from /usr/include/stdlib.h:26,
+                 from /mnt/hdd/homes/ydhouib/miniforge3/envs/deeplearning/lib/python3.10/site-packages/triton/backends/nvidia/include/cuda.h:56,
+                 from /mnt/hdd/homes/ydhouib/miniforge3/envs/deeplearning/lib/python3.10/site-packages/triton/backends/nvidia/driver.c:1:
+/usr/include/features.h:319:10: note: this is the location of the previous definition
+  319 | # define _POSIX_C_SOURCE        202405L
+      |          ^~~~~~~~~~~~~~~
+tag=bf16-cl-compile-synthetic | materiel=NVIDIA H100 NVL | arch=resnet50 | precision=bf16 | channels_last=True | compile=True | donnees=synthetic | workers= | pin_memory= | batch=64 | img_s=4051.7 | img_s_min=4008.3 | img_s_max=4236.6 | pic_memoire_go=3.07 | compilation_s=40.4 | epoque_s=nan
+tag=bf16-cl-raw-w1 | materiel=NVIDIA H100 NVL | arch=resnet50 | precision=bf16 | channels_last=True | compile=False | donnees=raw | workers=1 | pin_memory=True | batch=64 | img_s=182.6 | img_s_min=171.6 | img_s_max=196.9 | pic_memoire_go=3.29 | compilation_s=nan | epoque_s=nan
+tag=bf16-cl-compile-raw-w1 | materiel=NVIDIA H100 NVL | arch=resnet50 | precision=bf16 | channels_last=True | compile=True | donnees=raw | workers=1 | pin_memory=True | batch=64 | img_s=214.0 | img_s_min=202.8 | img_s_max=223.3 | pic_memoire_go=3.07 | compilation_s=5.9 | epoque_s=nan
+tag=bf16-cl-raw-w3 | materiel=NVIDIA H100 NVL | arch=resnet50 | precision=bf16 | channels_last=True | compile=False | donnees=raw | workers=3 | pin_memory=True | batch=64 | img_s=2473.2 | img_s_min=1562.4 | img_s_max=2480.8 | pic_memoire_go=3.29 | compilation_s=nan | epoque_s=nan
+tag=bf16-cl-compile-raw-w3 | materiel=NVIDIA H100 NVL | arch=resnet50 | precision=bf16 | channels_last=True | compile=True | donnees=raw | workers=3 | pin_memory=True | batch=64 | img_s=4157.2 | img_s_min=1397.0 | img_s_max=4248.1 | pic_memoire_go=3.07 | compilation_s=6.2 | epoque_s=nan
+tag=bf16-cl-small-w1 | materiel=NVIDIA H100 NVL | arch=resnet50 | precision=bf16 | channels_last=True | compile=False | donnees=small | workers=1 | pin_memory=True | batch=64 | img_s=493.8 | img_s_min=491.1 | img_s_max=499.7 | pic_memoire_go=3.29 | compilation_s=nan | epoque_s=nan
+tag=bf16-cl-compile-small-w1 | materiel=NVIDIA H100 NVL | arch=resnet50 | precision=bf16 | channels_last=True | compile=True | donnees=small | workers=1 | pin_memory=True | batch=64 | img_s=484.8 | img_s_min=448.2 | img_s_max=509.7 | pic_memoire_go=3.07 | compilation_s=3.7 | epoque_s=nan
+tag=bf16-cl-small-w3 | materiel=NVIDIA H100 NVL | arch=resnet50 | precision=bf16 | channels_last=True | compile=False | donnees=small | workers=3 | pin_memory=True | batch=64 | img_s=1023.5 | img_s_min=792.0 | img_s_max=1481.9 | pic_memoire_go=3.29 | compilation_s=nan | epoque_s=nan
+tag=bf16-cl-compile-small-w3 | materiel=NVIDIA H100 NVL | arch=resnet50 | precision=bf16 | channels_last=True | compile=True | donnees=small | workers=3 | pin_memory=True | batch=64 | img_s=1843.3 | img_s_min=1272.3 | img_s_max=3434.3 | pic_memoire_go=3.07 | compilation_s=6.5 | epoque_s=nan
+[W1113 16:26:33.390810388 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 3288334336 bytes (free: 2296971264, total: 99951706112).
+[W1113 16:26:35.432386137 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 13153337344 bytes (free: 6373834752, total: 99951706112).
+[W1113 16:26:35.432846672 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 13153337344 bytes (free: 6373834752, total: 99951706112).
+[W1113 16:26:37.864785659 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 616562688 bytes (free: 617152512, total: 99951706112).
+[W1113 16:26:37.865088325 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 616562688 bytes (free: 617152512, total: 99951706112).
+[W1113 16:26:37.667929470 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 257949696 bytes (free: 27852800, total: 99951706112).
+[W1113 16:26:37.668230283 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 257949696 bytes (free: 27852800, total: 99951706112).
+[W1113 16:26:38.415648446 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 463470592 bytes (free: 396951552, total: 99951706112).
+[W1113 16:26:38.415923952 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 463470592 bytes (free: 396951552, total: 99951706112).
+[W1113 16:26:39.179661390 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 874512384 bytes (free: 529072128, total: 99951706112).
+[W1113 16:26:39.418103617 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 3493855232 bytes (free: 1531510784, total: 99951706112).
+[W1113 16:26:39.648330898 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 874512384 bytes (free: 256442368, total: 99951706112).
+[W1113 16:26:41.553893792 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 450887680 bytes (free: 375980032, total: 99951706112).
+[W1113 16:26:41.554195627 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 450887680 bytes (free: 375980032, total: 99951706112).
+[W1113 16:26:42.509620761 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 444596224 bytes (free: 424214528, total: 99951706112).
+[W1113 16:26:42.513266077 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 444596224 bytes (free: 445186048, total: 99951706112).
+[W1113 16:26:43.396025012 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 880803840 bytes (free: 705232896, total: 99951706112).
+[W1113 16:26:43.428246392 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1761607680 bytes (free: 264830976, total: 99951706112).
+[W1113 16:26:43.597813525 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 880803840 bytes (free: 428408832, total: 99951706112).
+[W1113 16:26:46.790153580 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 884998144 bytes (free: 300482560, total: 99951706112).
+[W1113 16:26:46.837437580 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1767899136 bytes (free: 281608192, total: 99951706112).
+[W1113 16:26:46.987418434 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 884998144 bytes (free: 27852800, total: 99951706112).
+[maxbatch-bf16] batch maximal (bf16) : 2200

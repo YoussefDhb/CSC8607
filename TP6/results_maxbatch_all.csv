@@ -1,0 +1,8 @@
+tag,materiel,precision,channels_last,batch_max
+ref-maxbatch,NVIDIA H100 NVL MIG 1g.12gb,fp32,False,120
+ref-maxbatch,NVIDIA H100 NVL MIG 1g.12gb,fp32,False,120
+ref-maxbatch,NVIDIA H100 NVL,fp32,False,1128
+ref-maxbatch,NVIDIA H100 NVL,fp32,False,1128
+ref-maxbatch,NVIDIA H100 NVL,fp32,False,1128
+ref-maxbatch,NVIDIA H100 NVL,fp32,False,1128
+ref-maxbatch,NVIDIA H100 NVL,fp32,False,1128

@@ -1,0 +1,32 @@
+Job 54909 sur starfighter-slurm-node-01-1 ; GPU : 0 ; CPU : 8
+Nœuds : starfighter-slurm-node-01-1 starfighter-slurm-node-02-1 ; rendez-vous sur starfighter-slurm-node-01-1
+all-reduce de 102 Mo sur 2 processus : 879.1 ms ; débit algorithmique 0.12 Go/s ; débit par lien 0.12 Go/s
+[rang 0/2] starfighter-slurm-node-01-1 : NVIDIA L4
+[rang 1/2] starfighter-slurm-node-02-1 : NVIDIA L4
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[0] [send] via NET/Socket/0
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Channel 00/0 : 1[0] -> 0[0] [receive] via NET/Socket/0
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[0] [send] via NET/Socket/0
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Channel 01/0 : 1[0] -> 0[0] [receive] via NET/Socket/0
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO NET/IB : No device found.
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO NET/IB : Using [RO]; OOB ens18:10.91.152.161<0>
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO NET/Plugin: Could not find: libnccl-net.so
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO NET/Socket : Using [0]ens18:10.91.152.161<0>
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Using network Socket
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[0] [receive] via NET/Socket/0
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Channel 00/0 : 1[0] -> 0[0] [send] via NET/Socket/0
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[0] [receive] via NET/Socket/0
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Channel 01/0 : 1[0] -> 0[0] [send] via NET/Socket/0
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO NET/IB : No device found.
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO NET/IB : Using [RO]; OOB ens18:10.91.152.162<0>
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO NET/Plugin: Could not find: libnccl-net.so
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO NET/Socket : Using [0]ens18:10.91.152.162<0>
+NCCL version 2.30.7+cuda13.3
+tag=l4-x1 | materiel=NVIDIA L4 | processus=1 | noeuds=1 | backend=nccl | precision=bf16 | bf16_hook=False | donnees=synthetic | accumulation=1 | batch_par_processus=64 | batch_effectif=64 | pas_ms=138.4 | img_s=462.4
+NCCL version 2.30.7+cuda13.3
+tag=l4-x2 | materiel=NVIDIA L4 | processus=2 | noeuds=2 | backend=nccl | precision=bf16 | bf16_hook=False | donnees=synthetic | accumulation=1 | batch_par_processus=64 | batch_effectif=128 | pas_ms=866.0 | img_s=147.8
+NCCL version 2.30.7+cuda13.3
+tag=l4-x2-bf16hook | materiel=NVIDIA L4 | processus=2 | noeuds=2 | backend=nccl | precision=bf16 | bf16_hook=True | donnees=synthetic | accumulation=1 | batch_par_processus=64 | batch_effectif=128 | pas_ms=462.4 | img_s=276.8
+NCCL version 2.30.7+cuda13.3
+tag=l4-x1-accum8 | materiel=NVIDIA L4 | processus=1 | noeuds=1 | backend=nccl | precision=bf16 | bf16_hook=False | donnees=synthetic | accumulation=8 | batch_par_processus=64 | batch_effectif=512 | pas_ms=1051.5 | img_s=486.9
+NCCL version 2.30.7+cuda13.3
+tag=l4-x2-accum8-bf16hook | materiel=NVIDIA L4 | processus=2 | noeuds=2 | backend=nccl | precision=bf16 | bf16_hook=True | donnees=synthetic | accumulation=8 | batch_par_processus=64 | batch_effectif=1024 | pas_ms=1373.3 | img_s=745.6

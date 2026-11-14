@@ -1,0 +1,120 @@
+[rang 1/2] starfighter-slurm-node-02-1 : NVIDIA L4
+[rang 0/2] starfighter-slurm-node-01-1 : NVIDIA L4
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO ncclOsDlopen(libnccl-env.so) failed: libnccl-env.so: cannot open shared object file: No such file or directory
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO ENV/Plugin: Could not find: libnccl-env.so
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Bootstrap: Using ens18:10.91.152.161<0>
+starfighter-slurm-node-01-1:53:60 [0] NCCL INFO Socket handshake magic 0x564ab9f2fc4b9d6c (built-in default)
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO cudaDriverVersion 13020
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO NCCL version 2.30.7+cuda13.3
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO NCCL git version HEAD a5187fa2e
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Comm config Blocking set to 1
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Comm config Comm name set to default_pg:0
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO ncclOsDlopen(libnccl-env.so) failed: libnccl-env.so: cannot open shared object file: No such file or directory
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO ENV/Plugin: Could not find: libnccl-env.so
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO cudaDriverVersion 13020
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Bootstrap: Using ens18:10.91.152.162<0>
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO NCCL version 2.30.7+cuda13.3
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO NCCL git version HEAD a5187fa2e
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Comm config Blocking set to 1
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Comm config Comm name set to default_pg:0
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO ncclOsDlopen(libnccl-net.so) failed: libnccl-net.so: cannot open shared object file: No such file or directory
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO NET/Plugin: Could not find: libnccl-net.so
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO ncclOsDlopen(libnccl-net.so) failed: libnccl-net.so: cannot open shared object file: No such file or directory
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO NET/Plugin: Could not find: libnccl-net.so
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO NET/IB : No device found.
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO NET/IB : Using [RO]; OOB ens18:10.91.152.162<0>
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO NET/IB : No device found.
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO NET/IB : Using [RO]; OOB ens18:10.91.152.161<0>
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Failed to initialize NET plugin IB
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Failed to initialize NET plugin IB
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO NET/Socket : Using [0]ens18:10.91.152.161<0>
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Initialized NET plugin Socket
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Assigned NET plugin Socket to comm
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO NET/Socket : Using [0]ens18:10.91.152.162<0>
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Initialized NET plugin Socket
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Assigned NET plugin Socket to comm
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO ncclOsDlopen(libnccl-rma.so) failed: libnccl-rma.so: cannot open shared object file: No such file or directory
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO RMA/Plugin: Could not find: libnccl-rma.so
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO RMA/Plugin: Failed to load external plugin libnccl-rma.so, dlHandle: (nil), ncclRma: (nil)
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO RMA/Plugin: Failed to initialize any plugin
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO ncclOsDlopen(libnccl-rma.so) failed: libnccl-rma.so: cannot open shared object file: No such file or directory
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO RMA/Plugin: Could not find: libnccl-rma.so
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO RMA/Plugin: Failed to load external plugin libnccl-rma.so, dlHandle: (nil), ncclRma: (nil)
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO RMA/Plugin: Failed to initialize any plugin
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO ncclOsDlopen(libnccl-gin.so) failed: libnccl-gin.so: cannot open shared object file: No such file or directory
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO GIN/Plugin: Could not find: libnccl-gin.so
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO GIN/Plugin: Failed to load external plugin libnccl-gin.so, dlHandle: (nil), ncclGin: (nil)
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO GIN/Plugin: Failed to initialize any GIN plugin
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Using network Socket
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO ncclOsDlopen(libnccl-gin.so) failed: libnccl-gin.so: cannot open shared object file: No such file or directory
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO GIN/Plugin: Could not find: libnccl-gin.so
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO GIN/Plugin: Failed to load external plugin libnccl-gin.so, dlHandle: (nil), ncclGin: (nil)
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO GIN/Plugin: Failed to initialize any GIN plugin
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Using network Socket
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Loaded NVML from libnvidia-ml.so.1
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Loaded NVML from libnvidia-ml.so.1
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO [Rank 1] ncclCommInitRankConfig comm 0x557a11f66760 rank 1 nranks 2 cudaDev 0 nvmlDev 0 busId 6100 commId 0xa9a8a2e6caba1797 - Init START
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO [Rank 0] ncclCommInitRankConfig comm 0x651bc3f45d40 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 6100 commId 0xa9a8a2e6caba1797 - Init START
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Socket handshake magic 0x564ab9f2fc4b9d6c (built-in default)
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO RAS client listening socket at ::1<28028>
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO RAS client listening socket at ::1<28028>
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Bootstrap timings total 0.004018 (create 0.000029, send 0.000672, recv 0.001577, ring 0.000899, delay 0.000000)
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Bootstrap timings total 0.003704 (create 0.000030, send 0.000089, recv 0.000418, ring 0.000671, delay 0.000001)
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO ncclTopoGetCpuAffinity: Affinity for GPU 0 is empty, ignoring. (GPU affinity =  ; CPU affinity = 0-7).
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO ncclTopoGetCpuAffinity: Affinity for GPU 0 is empty, ignoring. (GPU affinity =  ; CPU affinity = 0-7).
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Rank 0: 1 Net devices
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Rank 0: 0 CollNet devices
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Rank 1: 1 Net devices
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Rank 1: 0 CollNet devices
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Local Net device counts across ranks: min 1 max 1
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Local CollNet device counts across ranks: min 0 max 0
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO comm 0x651bc3f45d40 rank 0 nRanks 2 nNodes 2 localRanks 1 localRank 0 MNNVL 0
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Channel 00/02 : 0 1
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Channel 01/02 : 0 1
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] -1/-1/-1->0->1
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO P2P Chunksize set to 131072
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Tuning P2P operations with maxP2pPeers = 2
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO comm 0x557a11f66760 rank 1 nRanks 2 nNodes 2 localRanks 1 localRank 0 MNNVL 0
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] 0/-1/-1->1->-1
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO P2P Chunksize set to 131072
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Tuning P2P operations with maxP2pPeers = 2
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO ncclOsDlopen(libnccl-profiler.so) failed: libnccl-profiler.so: cannot open shared object file: No such file or directory
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Check P2P Type isAllDirectP2p 1 directMode 0 isAllCudaP2p 1
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO ncclOsDlopen(libnccl-profiler.so) failed: libnccl-profiler.so: cannot open shared object file: No such file or directory
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Check P2P Type isAllDirectP2p 1 directMode 0 isAllCudaP2p 1
+starfighter-slurm-node-01-1:53:62 [0] NCCL INFO [Proxy Service] Device 0 CPU core 2
+starfighter-slurm-node-01-1:53:62 [0] NCCL INFO proxy listening socket at 10.91.152.161<35675>
+starfighter-slurm-node-01-1:53:63 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 4
+starfighter-slurm-node-02-1:20:28 [0] NCCL INFO [Proxy Service] Device 0 CPU core 2
+starfighter-slurm-node-02-1:20:29 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 3
+starfighter-slurm-node-02-1:20:28 [0] NCCL INFO proxy listening socket at 10.91.152.162<56529>
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO ncclOsDlopen(libnccl-tuner.so) failed: libnccl-tuner.so: cannot open shared object file: No such file or directory
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 1 p2p channels per peer
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Symmetric memory is not supported. cuMemEnable 1, globalGinSupport 0, cuMemGdrSupport 1
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO CC Off, workFifoBytes 1048576
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO ncclOsDlopen(libnccl-tuner.so) failed: libnccl-tuner.so: cannot open shared object file: No such file or directory
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 1 p2p channels per peer
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Symmetric memory is not supported. cuMemEnable 1, globalGinSupport 0, cuMemGdrSupport 1
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO ncclCommInitRankConfig comm 0x651bc3f45d40 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 6100 commId 0xa9a8a2e6caba1797 - Init COMPLETE
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Init timings - ncclCommInitRankConfig: rank 0 nranks 2 total 0.92 (kernels 0.60, alloc 0.30, bootstrap 0.00, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.00, rest 0.00)
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO ncclCommInitRankConfig comm 0x557a11f66760 rank 1 nranks 2 cudaDev 0 nvmlDev 0 busId 6100 commId 0xa9a8a2e6caba1797 - Init COMPLETE
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Init timings - ncclCommInitRankConfig: rank 1 nranks 2 total 0.91 (kernels 0.58, alloc 0.30, bootstrap 0.00, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.00, rest 0.00)
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[0] [receive] via NET/Socket/0
+starfighter-slurm-node-02-1:20:30 [0] NCCL INFO [Proxy Progress] Device 0 CPU core 4
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[0] [receive] via NET/Socket/0
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Channel 00/0 : 1[0] -> 0[0] [send] via NET/Socket/0
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Channel 01/0 : 1[0] -> 0[0] [send] via NET/Socket/0
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Channel 00/0 : 1[0] -> 0[0] [receive] via NET/Socket/0
+starfighter-slurm-node-01-1:53:64 [0] NCCL INFO [Proxy Progress] Device 0 CPU core 1
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Channel 01/0 : 1[0] -> 0[0] [receive] via NET/Socket/0
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[0] [send] via NET/Socket/0
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[0] [send] via NET/Socket/0
+starfighter-slurm-node-01-1:53:53 [0] NCCL INFO Connected all rings, use ring PXN 0 GDR 0
+starfighter-slurm-node-02-1:20:20 [0] NCCL INFO Connected all rings, use ring PXN 0 GDR 0
+all-reduce de 102 Mo sur 2 processus : 879.1 ms ; débit algorithmique 0.12 Go/s ; débit par lien 0.12 Go/s
